@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap');
+
+:root {
+    --max-width: 1200px;
+    --max-height: 600px;
+    --font-family: 'Inter', sans-serif;
+    --default-padding: 20px;
+    --bg-color: #F0F0F0;
+    --border-radius: 6px;
+    --animation-timing: .2s;
+    --shadow-default: 0 0 5px 3px rgba(0,0,0,.1);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    font-family: var(--font-family);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--default-padding);
+    background-color: var(--bg-color);
+    min-height: 100vh;
+}
+
+.container--isActive .container__textContent,
+.container--isActive .container__imageContent{
+    transform: translateY(0px);
+    opacity: 1;
+    visibility: visible;
+}
+
+.container__content {
+    display: flex;
+    max-width: var(--max-width);
+    padding: calc(var(--default-padding) * 2);
+    box-shadow: var(--shadow-default);
+    border-radius: var(--border-radius);
+    background-repeat: no-repeat;
+    background-image: url('../images/pattern-curve.svg');
+    background-color: white;
+    background-position: bottom left;
+}
+
+.container__textContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: translateY(-20px); /*animation done*/
+    opacity: 0;
+    visibility: hidden;
+    transition: all 1s;
+}
+
+.container__text {
+    display: flex;
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 38px;
+    margin-bottom: 10px;
+}
+
+.container__authorData {
+    display: flex;
+}
+
+.container__authorName {
+    font-weight: 700;
+}
+
+.container__authorPosition {
+    font-weight: 500;
+    margin-left: 5px;
+    color: rgb(212, 211, 216);
+}
+
+.container__socialLinks {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.container__socialLink {
+    width: 32px;
+    margin-right: calc(var(--default-padding) / 2);
+    filter: grayscale(1);
+    border-radius: 50%;
+    transition: all var(--animation-timing); /*animation Done*/
+}
+
+.container__socialLink:hover {
+    filter: grayscale(0);
+    width: 35px;
+    box-shadow: var(--shadow-default);
+}
+
+.container__socialImage {
+    width: 100%;
+}
+
+.container__imageContent {
+    flex: 1;
+    max-width: 540px;
+    display: flex;
+    align-items: center;
+    padding: 50px;
+    background-size: contain;
+    background-position: center;
+    background-image: url('../images/pattern-bg.svg');
+    background-repeat: no-repeat;
+    transform: translateY(20px); /*animation done*/
+    opacity: 0;
+    visibility: hidden;
+    transition: all 1s;
+    perspective: 1000px; /*to give a 3d effect*/
+}
+
+.container__image {
+    width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-default);
+    transition: all .1s;
+}
+
+@media (max-width: 760px) {
+    .container {
+        flex-direction: column-reverse;
+        padding: 10px;
+    }
+
+    .container__content {
+        flex-direction: column-reverse;
+        height: auto;
+        max-height: inherit;
+        padding: 20px;
+    }
+
+    .container__text {
+        font-size: 22px;
+        line-height: 32px;
+    }
+
+    .container__imageContent {
+        padding: 30px;
+        margin: 0 -10px;
+    }
+
+    .container__authorData {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container__authorPosition {
+        margin-left: 0;
+        margin-top: 5px;
+    }
+
+    .container__socialLink {
+        filter: grayscale(0);
+        width: 35px;
+        box-shadow: var(--shadow-default);
+    }
+}
